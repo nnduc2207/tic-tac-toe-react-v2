@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Game from "./Game";
-import "./global.css";
+import "../global.css";
 
 function Window() {
   const [input, setInput] = useState();

@@ -1,5 +1,5 @@
 import Square from "./Square";
-import "./global.css";
+import "../global.css";
 
 function Board(props) {
   function renderSquare(i) {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Board from "./Board";
-import "./global.css";
+import "../global.css";
 
 function Game(props) {
   const size = props.size
