@@ -137,6 +137,6 @@ function generateWinline5x5(location, size) {
   // Add cross
   res.push([...[...Array(5).keys()].map(key => key * size + key + location)])
   // Add reverse-cross
-  res.push([...[...Array(5).keys()].map(key => (key+1) * size - (key+1) + location)])
+  res.push([...[...Array(5).keys()].map(key => key * size + 5-1-key + location)])
   return res
 }
