@@ -100,25 +100,12 @@ function calculateWinner(squares) {
 
   // Check all lines to calculate winner
   const lines = [];
-  for (let i = 0; i < size; i++) {
-    const horizontal = [];
-    const vertical = [];
-    for (let j = 0; j < size; j++) {
-      horizontal.push(i * size + j);
-      vertical.push(i + j * size);
+  for (let i = 0; i <= size - 5; i++) {
+    for (let j = 0; j <= size - 5; j++) {
+      lines.push(...generateWinline5x5(i * size + j, size))
     }
-    lines.push(horizontal);
-    lines.push(vertical);
   }
-  const cross = [];
-  const reverse = [];
-  for (let i = 0; i < size; i++) {
-    cross.push(i * size + i);
-    reverse.push((i + 1) * size - (i + 1));
-  }
-  lines.push(cross);
-  lines.push(reverse);
-
+  console.log(lines);
   // check winner
   for (let i = 0; i < lines.length; i++) {
     if (!squares[lines[i][0]]) {
@@ -137,4 +124,19 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+function generateWinline5x5(location, size) {
+  const res = []
+  for (let i = 0; i < 5; i++) {
+    // Add horizontal
+    res.push([...[...Array(5).keys()].map(key => key + location + i*size)])
+    // Add vertical
+    res.push([...[...Array(5).keys()].map(key => key * size + location + i)])
+  }
+  // Add cross
+  res.push([...[...Array(5).keys()].map(key => key * size + key + location)])
+  // Add reverse-cross
+  res.push([...[...Array(5).keys()].map(key => (key+1) * size - (key+1) + location)])
+  return res
 }

@@ -23,7 +23,14 @@ function Window() {
         onChange={(e) => setInput(e.target.value)}
         required
       />
-      <button onClick={() => setSize(input)} disabled={size} > Enter </button>
+      <button onClick={() => {
+        if (input < 5) {
+          alert("Size board must larger than 5.")
+        }
+        else {
+          setSize(input)}
+        }} 
+        disabled={size} > Enter </button>
       <button onClick={() => setSize(null)} disabled={!size} > Reset </button>
 
       {renderGame(size)}
